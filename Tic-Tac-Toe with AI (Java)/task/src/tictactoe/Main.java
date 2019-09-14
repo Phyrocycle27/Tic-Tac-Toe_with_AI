@@ -18,74 +18,75 @@ public class Main {
 
             switch (parameters[0]) {
                 case "start":
+                    if (parameters.length == 3) {
+                        // read parameters
+                        switch (parameters[1]) {
+                            case "user":
+                                playerOne = new User('X');
+                                break;
+                            case "easy":
+                                playerOne = new Easy('X');
+                                break;
+                            case "medium":
+                                playerOne = new Medium('X');
+                                break;
+                            default:
+                                System.out.println("Bad parameters!");
+                                continue;
+                        }
+
+                        switch (parameters[2]) {
+                            case "user":
+                                playerTwo = new User('O');
+                                break;
+                            case "easy":
+                                playerTwo = new Easy('O');
+                                break;
+                            case "medium":
+                                playerTwo = new Medium('O');
+                                break;
+                            default:
+                                System.out.println("Bad parameters!");
+                                continue;
+                        }
+
+                        //start game
+                        cells = new char[length][length];
+                        for (int i = 0; i < length * length; i++) {
+                            cells[i / length][i % length] = ' ';
+                        }
+
+                        printGameField();
+                        String gameState;
+
+                        while (true) {
+                            playerOne.move(cells);
+                            printGameField();
+
+                            gameState = checkGameState();
+                            if (!gameState.equals("")) {
+                                System.out.println(gameState);
+                                break;
+                            }
+
+                            playerTwo.move(cells);
+                            printGameField();
+
+                            gameState = checkGameState();
+                            if (!gameState.equals("")) {
+                                System.out.println(gameState);
+                                break;
+                            }
+                        }
+                    } else {
+                        System.out.println("Bad parameters!");
+                    }
                     break;
                 case "exit":
                     return;
                 default:
                     System.out.println("Bad parameters!");
-                    continue;
-            }
-            if (parameters.length == 3) {
-                switch (parameters[1]) {
-                    case "user":
-                        playerOne = new User('X');
-                        break;
-                    case "easy":
-                        playerOne = new Easy('X');
-                        break;
-                    case "medium":
-                        playerOne = new Medium('X');
-                        break;
-                    default:
-                        System.out.println("Bad parameters!");
-                        continue;
-                }
-
-                switch (parameters[2]) {
-                    case "user":
-                        playerTwo = new User('O');
-                        break;
-                    case "easy":
-                        playerTwo = new Easy('O');
-                        break;
-                    case "medium":
-                        playerTwo = new Medium('O');
-                        break;
-                    default:
-                        System.out.println("Bad parameters!");
-                        continue;
-                }
-                break;
-            } else {
-                System.out.println("Bad parameters!");
-            }
-        }
-
-        cells = new char[length][length];
-        for (int i = 0; i < length * length; i++) {
-            cells[i / length][i % length] = ' ';
-        }
-
-        printGameField();
-        String gameState;
-
-        while (true) {
-            playerOne.move(cells);
-            printGameField();
-
-            gameState = checkGameState();
-            if (!gameState.equals("")) {
-                System.out.println(gameState);
-                break;
-            }
-
-            playerTwo.move(cells);
-            printGameField();
-
-            gameState = checkGameState();
-            if (!gameState.equals("")) {
-                System.out.println(gameState);
-                break;
+                    break;
             }
         }
     }

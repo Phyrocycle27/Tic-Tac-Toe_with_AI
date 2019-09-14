@@ -8,6 +8,7 @@ public class User implements Player{
     public User (char cell) {
         this.cell = cell;
     }
+
     @Override
     public void move(char[][] cells) {
         while (true) {

@@ -840,7 +840,7 @@
                       <option name="index" value="9" />
                       <option name="name" value="Make a &quot;medium&quot; difficulty level" />
                       <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
+                      <option name="status" value="Solved" />
                       <option name="files">
                         <map>
                           <entry key="test/TicTacToeTest.java">
@@ -905,7 +905,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/tictactoe/User.java" />
                                 <option name="text" value="package tictactoe;&#10;&#10;import java.util.Scanner;&#10;&#10;public class User implements Player{&#10;    private char cell;&#10;&#10;    public User (char cell) {&#10;        this.cell = cell;&#10;    }&#10;    @Override&#10;    public void move(char[][] cells) {&#10;        while (true) {&#10;            Scanner corScanner = new Scanner(System.in);&#10;&#10;            System.out.print(&quot;Enter the coordinates: &quot;);&#10;&#10;            Integer x = corScanner.hasNextInt() ? corScanner.nextInt() : null;&#10;            Integer y = corScanner.hasNextInt() ? corScanner.nextInt() : null;&#10;&#10;            if (x == null || y == null) {&#10;                System.out.println(&quot;You should enter numbers!&quot;);&#10;            } else if ((x &gt; Main.getLength() || x &lt; 1) || (y &gt; Main.getLength() || y &lt; 1)) {&#10;                System.out.println(&quot;Coordinates should be from 1 to &quot; + Main.getLength() + &quot;!&quot;);&#10;            } else if (cells[Main.getLength() - y][x - 1] != ' ') {&#10;                System.out.println(&quot;This cell is occupied! Choose another one!&quot;);&#10;            } else {&#10;                cells[Main.getLength() - y][x - 1] = cell;&#10;                break;&#10;            }&#10;        }&#10;    }&#10;}" />
                                 <option name="trackChanges" value="true" />
